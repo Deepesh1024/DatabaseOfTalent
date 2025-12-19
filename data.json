@@ -1,0 +1,604 @@
+{
+  "dot_profiles": [
+    {
+      "dot_id": "DOT-IN-0001",
+      "candidate_meta": { "country": "India", "experience_years": 1.2, "education": "B.Tech", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Java", "Spring Boot", "SQL"], "claim_confidence_score": 0.85, "overclaim_flags": [], "resume_consistency": 0.92 },
+        "screening_round": { "problem_understanding": 0.88, "communication_clarity": 0.75, "logical_reasoning": 0.82, "red_flags": [] },
+        "github_analysis": { "repo_count": 8, "originality_score": 0.90, "code_quality": 0.78, "commit_consistency": 0.85, "observations": ["Consistent personal projects"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.81,
+          "time_complexity_awareness": 0.75,
+          "edge_case_handling": 0.70,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.89, "reasoning_consistency": 0.85, "trust_score": 0.91 },
+      "verified_skills": ["Java", "Spring Boot", "SQL"],
+      "skills_rejected": [],
+      "final_verdict": "Verified",
+      "notes": "Strong alignment between resume claims and practical demonstration."
+    },
+    {
+      "dot_id": "DOT-IN-0002",
+      "candidate_meta": { "country": "India", "experience_years": 4.5, "education": "M.Tech", "primary_domain": "Data Science" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Python", "TensorFlow", "NLP", "AWS"], "claim_confidence_score": 0.70, "overclaim_flags": ["NLP depth ambiguous"], "resume_consistency": 0.65 },
+        "screening_round": { "problem_understanding": 0.78, "communication_clarity": 0.80, "logical_reasoning": 0.75, "red_flags": [] },
+        "github_analysis": { "repo_count": 12, "originality_score": 0.45, "code_quality": 0.60, "commit_consistency": 0.50, "observations": ["High fork rate", "Sparse commit history"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.65,
+          "time_complexity_awareness": 0.60,
+          "edge_case_handling": 0.55,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.55, "reasoning_consistency": 0.60, "trust_score": 0.58 },
+      "verified_skills": ["Python"],
+      "skills_rejected": ["NLP", "TensorFlow", "AWS"],
+      "final_verdict": "Partially Verified",
+      "notes": "Core Python skills verified; advanced AI/Cloud claims lack practical evidence."
+    },
+    {
+      "dot_id": "DOT-IN-0003",
+      "candidate_meta": { "country": "India", "experience_years": 0.5, "education": "B.Tech", "primary_domain": "Frontend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["React", "JavaScript", "CSS"], "claim_confidence_score": 0.90, "overclaim_flags": [], "resume_consistency": 0.88 },
+        "screening_round": { "problem_understanding": 0.65, "communication_clarity": 0.70, "logical_reasoning": 0.68, "red_flags": [] },
+        "github_analysis": { "repo_count": 5, "originality_score": 0.82, "code_quality": 0.75, "commit_consistency": 0.80, "observations": ["Clean code style"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.72,
+          "time_complexity_awareness": 0.50,
+          "edge_case_handling": 0.60,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.80, "reasoning_consistency": 0.75, "trust_score": 0.85 },
+      "verified_skills": ["React", "JavaScript", "CSS"],
+      "skills_rejected": [],
+      "final_verdict": "Verified",
+      "notes": "Solid entry-level profile; fundamentals verified."
+    },
+    {
+      "dot_id": "DOT-IN-0004",
+      "candidate_meta": { "country": "India", "experience_years": 2.8, "education": "B.Tech", "primary_domain": "Full Stack" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["MERN Stack", "Redis", "Docker"], "claim_confidence_score": 0.75, "overclaim_flags": ["Redis expertise"], "resume_consistency": 0.72 },
+        "screening_round": { "problem_understanding": 0.85, "communication_clarity": 0.82, "logical_reasoning": 0.80, "red_flags": [] },
+        "github_analysis": { "repo_count": 15, "originality_score": 0.70, "code_quality": 0.68, "commit_consistency": 0.75, "observations": [] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.30,
+          "time_complexity_awareness": 0.20,
+          "edge_case_handling": 0.15,
+          "anti_cheat_signals": { "keystroke_variance": "robotic", "copy_paste_detected": true, "focus_lost_count": 12 }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.30, "reasoning_consistency": 0.25, "trust_score": 0.10 },
+      "verified_skills": [],
+      "skills_rejected": ["MERN Stack", "Redis", "Docker"],
+      "final_verdict": "Not Verified",
+      "notes": "Critical integrity failure; extensive cheating detected in coding round."
+    },
+    {
+      "dot_id": "DOT-IN-0005",
+      "candidate_meta": { "country": "India", "experience_years": 5.5, "education": "MCA", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Java", "Microservices", "Kafka", "Kubernetes"], "claim_confidence_score": 0.88, "overclaim_flags": [], "resume_consistency": 0.85 },
+        "screening_round": { "problem_understanding": 0.90, "communication_clarity": 0.85, "logical_reasoning": 0.88, "red_flags": [] },
+        "github_analysis": { "repo_count": 4, "originality_score": 0.60, "code_quality": 0.70, "commit_consistency": 0.40, "observations": ["Limited public activity"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.85,
+          "time_complexity_awareness": 0.90,
+          "edge_case_handling": 0.88,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.85, "reasoning_consistency": 0.88, "trust_score": 0.92 },
+      "verified_skills": ["Java", "Microservices", "Kafka"],
+      "skills_rejected": ["Kubernetes"],
+      "final_verdict": "Verified",
+      "notes": "Senior profile confirmed; minimal public code offset by strong live reasoning."
+    },
+     {
+      "dot_id": "DOT-IN-0006",
+      "candidate_meta": { "country": "India", "experience_years": 3.0, "education": "B.Tech", "primary_domain": "Mobile" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Flutter", "Dart", "Firebase"], "claim_confidence_score": 0.82, "overclaim_flags": [], "resume_consistency": 0.80 },
+        "screening_round": { "problem_understanding": 0.75, "communication_clarity": 0.78, "logical_reasoning": 0.72, "red_flags": [] },
+        "github_analysis": { "repo_count": 10, "originality_score": 0.85, "code_quality": 0.80, "commit_consistency": 0.82, "observations": ["Detailed readme files"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.68,
+          "time_complexity_awareness": 0.60,
+          "edge_case_handling": 0.65,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.80, "reasoning_consistency": 0.78, "trust_score": 0.88 },
+      "verified_skills": ["Flutter", "Dart", "Firebase"],
+      "skills_rejected": [],
+      "final_verdict": "Verified",
+      "notes": "Competent mobile developer with verifiable portfolio."
+    },
+    {
+      "dot_id": "DOT-IN-0007",
+      "candidate_meta": { "country": "India", "experience_years": 1.8, "education": "B.Tech", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Go", "gRPC", "PostgreSQL"], "claim_confidence_score": 0.60, "overclaim_flags": ["Senior-level architecture claims"], "resume_consistency": 0.55 },
+        "screening_round": { "problem_understanding": 0.60, "communication_clarity": 0.55, "logical_reasoning": 0.58, "red_flags": ["Memorized answers suspected"] },
+        "github_analysis": { "repo_count": 20, "originality_score": 0.20, "code_quality": 0.40, "commit_consistency": 0.30, "observations": ["Mostly cloned repos"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.45,
+          "time_complexity_awareness": 0.30,
+          "edge_case_handling": 0.35,
+          "anti_cheat_signals": { "keystroke_variance": "erratic", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.35, "reasoning_consistency": 0.40, "trust_score": 0.30 },
+      "verified_skills": [],
+      "skills_rejected": ["Go", "gRPC", "PostgreSQL"],
+      "final_verdict": "Not Verified",
+      "notes": "Significant gap between claimed expertise and demonstrated ability; originality concerns."
+    },
+    {
+      "dot_id": "DOT-IN-0008",
+      "candidate_meta": { "country": "India", "experience_years": 4.0, "education": "B.Tech", "primary_domain": "Frontend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Angular", "TypeScript", "RxJS"], "claim_confidence_score": 0.78, "overclaim_flags": [], "resume_consistency": 0.75 },
+        "screening_round": { "problem_understanding": 0.80, "communication_clarity": 0.72, "logical_reasoning": 0.76, "red_flags": [] },
+        "github_analysis": { "repo_count": 7, "originality_score": 0.65, "code_quality": 0.70, "commit_consistency": 0.60, "observations": [] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.75,
+          "time_complexity_awareness": 0.70,
+          "edge_case_handling": 0.72,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.75, "reasoning_consistency": 0.74, "trust_score": 0.80 },
+      "verified_skills": ["Angular", "TypeScript"],
+      "skills_rejected": ["RxJS"],
+      "final_verdict": "Partially Verified",
+      "notes": "Solid frontend basics; RxJS complexity handling was insufficient."
+    },
+    {
+      "dot_id": "DOT-IN-0009",
+      "candidate_meta": { "country": "India", "experience_years": 0.2, "education": "BCA", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["PHP", "Laravel", "MySQL"], "claim_confidence_score": 0.65, "overclaim_flags": [], "resume_consistency": 0.70 },
+        "screening_round": { "problem_understanding": 0.60, "communication_clarity": 0.50, "logical_reasoning": 0.55, "red_flags": [] },
+        "github_analysis": { "repo_count": 3, "originality_score": 0.75, "code_quality": 0.60, "commit_consistency": 0.70, "observations": ["Simple academic projects"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.55,
+          "time_complexity_awareness": 0.40,
+          "edge_case_handling": 0.50,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.65, "reasoning_consistency": 0.60, "trust_score": 0.75 },
+      "verified_skills": ["PHP", "MySQL"],
+      "skills_rejected": ["Laravel"],
+      "final_verdict": "Partially Verified",
+      "notes": "Junior candidate with potential; framework knowledge (Laravel) needs maturation."
+    },
+    {
+      "dot_id": "DOT-IN-0010",
+      "candidate_meta": { "country": "India", "experience_years": 6.0, "education": "M.Tech", "primary_domain": "MLOps" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Kubeflow", "Python", "CI/CD", "Azure ML"], "claim_confidence_score": 0.92, "overclaim_flags": [], "resume_consistency": 0.90 },
+        "screening_round": { "problem_understanding": 0.95, "communication_clarity": 0.90, "logical_reasoning": 0.94, "red_flags": [] },
+        "github_analysis": { "repo_count": 18, "originality_score": 0.88, "code_quality": 0.85, "commit_consistency": 0.90, "observations": ["Production-grade pipeline configs"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.88,
+          "time_complexity_awareness": 0.85,
+          "edge_case_handling": 0.90,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.92, "reasoning_consistency": 0.92, "trust_score": 0.95 },
+      "verified_skills": ["Kubeflow", "Python", "CI/CD", "Azure ML"],
+      "skills_rejected": [],
+      "final_verdict": "Verified",
+      "notes": "Exceptional candidate; verifies as a high-integrity domain expert."
+    },
+    {
+      "dot_id": "DOT-IN-0011",
+      "candidate_meta": { "country": "India", "experience_years": 2.5, "education": "B.Tech", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Node.js", "Express", "MongoDB"], "claim_confidence_score": 0.70, "overclaim_flags": [], "resume_consistency": 0.72 },
+        "screening_round": { "problem_understanding": 0.65, "communication_clarity": 0.68, "logical_reasoning": 0.62, "red_flags": [] },
+        "github_analysis": { "repo_count": 9, "originality_score": 0.72, "code_quality": 0.65, "commit_consistency": 0.68, "observations": [] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.70,
+          "time_complexity_awareness": 0.55,
+          "edge_case_handling": 0.60,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.70, "reasoning_consistency": 0.68, "trust_score": 0.78 },
+      "verified_skills": ["Node.js", "Express"],
+      "skills_rejected": ["MongoDB"],
+      "final_verdict": "Partially Verified",
+      "notes": "Competent coder; database optimization skills (MongoDB) not fully demonstrated."
+    },
+    {
+      "dot_id": "DOT-IN-0012",
+      "candidate_meta": { "country": "India", "experience_years": 1.0, "education": "B.Tech", "primary_domain": "Full Stack" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["React", "Python", "Django", "AWS"], "claim_confidence_score": 0.68, "overclaim_flags": ["AWS"], "resume_consistency": 0.65 },
+        "screening_round": { "problem_understanding": 0.70, "communication_clarity": 0.75, "logical_reasoning": 0.68, "red_flags": [] },
+        "github_analysis": { "repo_count": 6, "originality_score": 0.78, "code_quality": 0.68, "commit_consistency": 0.72, "observations": [] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.65,
+          "time_complexity_awareness": 0.60,
+          "edge_case_handling": 0.62,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.68, "reasoning_consistency": 0.68, "trust_score": 0.75 },
+      "verified_skills": ["React", "Python"],
+      "skills_rejected": ["Django", "AWS"],
+      "final_verdict": "Partially Verified",
+      "notes": "Junior full-stack potential; cloud and framework depth requires more experience."
+    },
+    {
+      "dot_id": "DOT-IN-0013",
+      "candidate_meta": { "country": "India", "experience_years": 3.5, "education": "B.Tech", "primary_domain": "DevOps" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Jenkins", "Docker", "Ansible", "Linux"], "claim_confidence_score": 0.85, "overclaim_flags": [], "resume_consistency": 0.82 },
+        "screening_round": { "problem_understanding": 0.82, "communication_clarity": 0.78, "logical_reasoning": 0.80, "red_flags": [] },
+        "github_analysis": { "repo_count": 14, "originality_score": 0.80, "code_quality": 0.75, "commit_consistency": 0.85, "observations": ["Practical automation scripts"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.78,
+          "time_complexity_awareness": 0.70,
+          "edge_case_handling": 0.75,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.82, "reasoning_consistency": 0.80, "trust_score": 0.88 },
+      "verified_skills": ["Jenkins", "Docker", "Ansible", "Linux"],
+      "skills_rejected": [],
+      "final_verdict": "Verified",
+      "notes": "Verified DevOps practitioner with consistent tooling experience."
+    },
+    {
+      "dot_id": "DOT-IN-0014",
+      "candidate_meta": { "country": "India", "experience_years": 0.8, "education": "B.Tech", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["C++", "DSA", "OS"], "claim_confidence_score": 0.90, "overclaim_flags": [], "resume_consistency": 0.88 },
+        "screening_round": { "problem_understanding": 0.85, "communication_clarity": 0.75, "logical_reasoning": 0.82, "red_flags": [] },
+        "github_analysis": { "repo_count": 5, "originality_score": 0.85, "code_quality": 0.80, "commit_consistency": 0.82, "observations": ["Competitive programming repos"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.92,
+          "time_complexity_awareness": 0.90,
+          "edge_case_handling": 0.85,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.90, "reasoning_consistency": 0.88, "trust_score": 0.92 },
+      "verified_skills": ["C++", "DSA", "OS"],
+      "skills_rejected": [],
+      "final_verdict": "Verified",
+      "notes": "High aptitude junior; strong theoretical and practical problem solving."
+    },
+    {
+      "dot_id": "DOT-IN-0015",
+      "candidate_meta": { "country": "India", "experience_years": 5.0, "education": "B.Tech", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Java", "Spring", "Hibernate", "Microservices"], "claim_confidence_score": 0.80, "overclaim_flags": [], "resume_consistency": 0.78 },
+        "screening_round": { "problem_understanding": 0.82, "communication_clarity": 0.80, "logical_reasoning": 0.78, "red_flags": [] },
+        "github_analysis": { "repo_count": 8, "originality_score": 0.65, "code_quality": 0.70, "commit_consistency": 0.60, "observations": [] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.50,
+          "time_complexity_awareness": 0.45,
+          "edge_case_handling": 0.40,
+          "anti_cheat_signals": { "keystroke_variance": "suspicious", "copy_paste_detected": true, "focus_lost_count": 5 }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.55, "reasoning_consistency": 0.50, "trust_score": 0.40 },
+      "verified_skills": ["Java"],
+      "skills_rejected": ["Spring", "Hibernate", "Microservices"],
+      "final_verdict": "Not Verified",
+      "notes": "Integrity concerns in coding round undermine seniority claims."
+    },
+    {
+      "dot_id": "DOT-IN-0016",
+      "candidate_meta": { "country": "India", "experience_years": 2.2, "education": "B.Tech", "primary_domain": "Frontend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Vue.js", "JavaScript", "HTML5"], "claim_confidence_score": 0.75, "overclaim_flags": [], "resume_consistency": 0.78 },
+        "screening_round": { "problem_understanding": 0.70, "communication_clarity": 0.72, "logical_reasoning": 0.68, "red_flags": [] },
+        "github_analysis": { "repo_count": 6, "originality_score": 0.70, "code_quality": 0.65, "commit_consistency": 0.70, "observations": [] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.68,
+          "time_complexity_awareness": 0.60,
+          "edge_case_handling": 0.65,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.72, "reasoning_consistency": 0.70, "trust_score": 0.80 },
+      "verified_skills": ["Vue.js", "JavaScript", "HTML5"],
+      "skills_rejected": [],
+      "final_verdict": "Verified",
+      "notes": "Standard mid-level frontend developer; verifies cleanly."
+    },
+    {
+      "dot_id": "DOT-IN-0017",
+      "candidate_meta": { "country": "India", "experience_years": 4.2, "education": "M.Tech", "primary_domain": "Data Science" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Python", "PyTorch", "Computer Vision"], "claim_confidence_score": 0.85, "overclaim_flags": [], "resume_consistency": 0.82 },
+        "screening_round": { "problem_understanding": 0.88, "communication_clarity": 0.85, "logical_reasoning": 0.86, "red_flags": [] },
+        "github_analysis": { "repo_count": 12, "originality_score": 0.82, "code_quality": 0.80, "commit_consistency": 0.85, "observations": ["Research paper implementations"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.80,
+          "time_complexity_awareness": 0.75,
+          "edge_case_handling": 0.78,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.85, "reasoning_consistency": 0.84, "trust_score": 0.90 },
+      "verified_skills": ["Python", "PyTorch", "Computer Vision"],
+      "skills_rejected": [],
+      "final_verdict": "Verified",
+      "notes": "Strong CV specialization; practical skills align well with research background."
+    },
+    {
+      "dot_id": "DOT-IN-0018",
+      "candidate_meta": { "country": "India", "experience_years": 1.5, "education": "B.Tech", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Python", "Flask", "SQL"], "claim_confidence_score": 0.60, "overclaim_flags": [], "resume_consistency": 0.65 },
+        "screening_round": { "problem_understanding": 0.55, "communication_clarity": 0.60, "logical_reasoning": 0.58, "red_flags": [] },
+        "github_analysis": { "repo_count": 4, "originality_score": 0.50, "code_quality": 0.55, "commit_consistency": 0.50, "observations": ["Inconsistent coding style"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.50,
+          "time_complexity_awareness": 0.40,
+          "edge_case_handling": 0.45,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.55, "reasoning_consistency": 0.52, "trust_score": 0.65 },
+      "verified_skills": ["Python"],
+      "skills_rejected": ["Flask", "SQL"],
+      "final_verdict": "Partially Verified",
+      "notes": "Early career struggles; foundational Python present but framework proficiency weak."
+    },
+    {
+      "dot_id": "DOT-IN-0019",
+      "candidate_meta": { "country": "India", "experience_years": 3.8, "education": "B.Tech", "primary_domain": "Full Stack" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Java", "Angular", "Spring Boot", "AWS"], "claim_confidence_score": 0.82, "overclaim_flags": [], "resume_consistency": 0.80 },
+        "screening_round": { "problem_understanding": 0.78, "communication_clarity": 0.75, "logical_reasoning": 0.76, "red_flags": [] },
+        "github_analysis": { "repo_count": 11, "originality_score": 0.75, "code_quality": 0.72, "commit_consistency": 0.78, "observations": [] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.75,
+          "time_complexity_awareness": 0.70,
+          "edge_case_handling": 0.72,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.78, "reasoning_consistency": 0.76, "trust_score": 0.85 },
+      "verified_skills": ["Java", "Angular", "Spring Boot"],
+      "skills_rejected": ["AWS"],
+      "final_verdict": "Partially Verified",
+      "notes": "Solid full-stack developer; cloud skills (AWS) unverifiable in current dataset."
+    },
+    {
+      "dot_id": "DOT-IN-0020",
+      "candidate_meta": { "country": "India", "experience_years": 0.5, "education": "B.Tech", "primary_domain": "Backend" },
+      "rounds": {
+        "resume_analysis": { "claimed_skills": ["Node.js", "JavaScript"], "claim_confidence_score": 0.55, "overclaim_flags": [], "resume_consistency": 0.60 },
+        "screening_round": { "problem_understanding": 0.50, "communication_clarity": 0.45, "logical_reasoning": 0.55, "red_flags": [] },
+        "github_analysis": { "repo_count": 2, "originality_score": 0.60, "code_quality": 0.50, "commit_consistency": 0.55, "observations": ["Minimal portfolio"] },
+        "dsa_coding_round": {
+          "problem_solving_score": 0.40,
+          "time_complexity_awareness": 0.30,
+          "edge_case_handling": 0.35,
+          "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+        }
+      },
+      "cross_round_validation": { "skill_claim_alignment": 0.45, "reasoning_consistency": 0.45, "trust_score": 0.60 },
+      "verified_skills": [],
+      "skills_rejected": ["Node.js", "JavaScript"],
+      "final_verdict": "Not Verified",
+      "notes": "Insufficient data points and performance to verify core skills."
+    }, 
+{
+    "dot_id": "DOT-IN-0021",
+    "candidate_meta": { "country": "India", "experience_years": 2.7, "education": "M.Tech", "primary_domain": "DevOps" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["Ansible", "Kubernetes", "Terraform", "AWS", "Linux"], "claim_confidence_score": 0.97, "overclaim_flags": [], "resume_consistency": 0.91 },
+      "screening_round": { "problem_understanding": 0.95, "communication_clarity": 0.78, "logical_reasoning": 0.82, "red_flags": [] },
+      "github_analysis": { "repo_count": 16, "originality_score": 0.91, "code_quality": 0.63, "commit_consistency": 0.81, "observations": [] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.83,
+        "time_complexity_awareness": 0.78,
+        "edge_case_handling": 0.77,
+        "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.92, "reasoning_consistency": 0.85, "trust_score": 0.89 },
+    "verified_skills": ["Ansible", "Kubernetes", "Terraform", "AWS", "Linux"],
+    "skills_rejected": [],
+    "final_verdict": "Verified",
+    "notes": "Strong alignment between claims and demonstrated skills."
+  },
+  {
+    "dot_id": "DOT-IN-0022",
+    "candidate_meta": { "country": "India", "experience_years": 2.6, "education": "M.Tech", "primary_domain": "Backend" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["Django", "Express", "Microservices", "Spring Boot"], "claim_confidence_score": 0.92, "overclaim_flags": [], "resume_consistency": 0.83 },
+      "screening_round": { "problem_understanding": 0.95, "communication_clarity": 0.67, "logical_reasoning": 0.92, "red_flags": [] },
+      "github_analysis": { "repo_count": 5, "originality_score": 0.79, "code_quality": 0.53, "commit_consistency": 0.45, "observations": [] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.77,
+        "time_complexity_awareness": 0.76,
+        "edge_case_handling": 0.68,
+        "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.47, "reasoning_consistency": 0.79, "trust_score": 0.84 },
+    "verified_skills": ["Django", "Express", "Microservices", "Spring Boot"],
+    "skills_rejected": [],
+    "final_verdict": "Verified",
+    "notes": "Strong alignment between claims and demonstrated skills."
+  },
+  {
+    "dot_id": "DOT-IN-0023",
+    "candidate_meta": { "country": "India", "experience_years": 5.4, "education": "M.Tech", "primary_domain": "Mobile" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["Android", "React Native", "Swift"], "claim_confidence_score": 0.62, "overclaim_flags": [], "resume_consistency": 0.59 },
+      "screening_round": { "problem_understanding": 0.72, "communication_clarity": 0.74, "logical_reasoning": 0.6, "red_flags": [] },
+      "github_analysis": { "repo_count": 3, "originality_score": 0.62, "code_quality": 0.59, "commit_consistency": 0.52, "observations": [] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.53,
+        "time_complexity_awareness": 0.51,
+        "edge_case_handling": 0.52,
+        "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.43, "reasoning_consistency": 0.5, "trust_score": 0.7 },
+    "verified_skills": ["Android"],
+    "skills_rejected": ["React Native", "Swift"],
+    "final_verdict": "Partially Verified",
+    "notes": "Verified fundamentals in Android, but depth lacking in advanced claims."
+  },
+  {
+    "dot_id": "DOT-IN-0024",
+    "candidate_meta": { "country": "India", "experience_years": 1.9, "education": "BCA", "primary_domain": "Backend" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["Spring Boot", "Django", "Express", "Microservices", "Python"], "claim_confidence_score": 0.95, "overclaim_flags": [], "resume_consistency": 0.83 },
+      "screening_round": { "problem_understanding": 0.95, "communication_clarity": 0.86, "logical_reasoning": 0.9, "red_flags": [] },
+      "github_analysis": { "repo_count": 9, "originality_score": 0.82, "code_quality": 0.69, "commit_consistency": 0.6, "observations": [] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.89,
+        "time_complexity_awareness": 0.88,
+        "edge_case_handling": 0.86,
+        "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.66, "reasoning_consistency": 0.85, "trust_score": 0.81 },
+    "verified_skills": ["Spring Boot", "Django", "Express", "Microservices", "Python"],
+    "skills_rejected": [],
+    "final_verdict": "Verified",
+    "notes": "Strong alignment between claims and demonstrated skills."
+  },
+  {
+    "dot_id": "DOT-IN-0025",
+    "candidate_meta": { "country": "India", "experience_years": 5.1, "education": "MCA", "primary_domain": "QA" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["TestNG", "JMeter", "Selenium", "Appium", "Python"], "claim_confidence_score": 0.8, "overclaim_flags": [], "resume_consistency": 0.89 },
+      "screening_round": { "problem_understanding": 0.76, "communication_clarity": 0.58, "logical_reasoning": 0.88, "red_flags": [] },
+      "github_analysis": { "repo_count": 19, "originality_score": 0.73, "code_quality": 0.64, "commit_consistency": 0.67, "observations": [] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.71,
+        "time_complexity_awareness": 0.62,
+        "edge_case_handling": 0.64,
+        "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.43, "reasoning_consistency": 0.81, "trust_score": 0.82 },
+    "verified_skills": ["TestNG", "JMeter", "Selenium", "Appium", "Python"],
+    "skills_rejected": [],
+    "final_verdict": "Verified",
+    "notes": "Strong alignment between claims and demonstrated skills."
+  },
+  {
+    "dot_id": "DOT-IN-0026",
+    "candidate_meta": { "country": "India", "experience_years": 1.0, "education": "B.Tech", "primary_domain": "Frontend" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["TypeScript", "Redux", "Tailwind", "HTML5", "Vue.js"], "claim_confidence_score": 0.65, "overclaim_flags": [], "resume_consistency": 0.72 },
+      "screening_round": { "problem_understanding": 0.66, "communication_clarity": 0.6, "logical_reasoning": 0.7, "red_flags": [] },
+      "github_analysis": { "repo_count": 6, "originality_score": 0.45, "code_quality": 0.7, "commit_consistency": 0.67, "observations": ["Cloned repos suspected"] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.67,
+        "time_complexity_awareness": 0.62,
+        "edge_case_handling": 0.63,
+        "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.53, "reasoning_consistency": 0.48, "trust_score": 0.66 },
+    "verified_skills": ["TypeScript", "Redux"],
+    "skills_rejected": ["Tailwind", "HTML5", "Vue.js"],
+    "final_verdict": "Partially Verified",
+    "notes": "Verified fundamentals in TypeScript, but depth lacking in advanced claims."
+  },
+  {
+    "dot_id": "DOT-IN-0027",
+    "candidate_meta": { "country": "India", "experience_years": 4.0, "education": "MCA", "primary_domain": "Mobile" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["Flutter", "React Native", "Dart"], "claim_confidence_score": 0.62, "overclaim_flags": [], "resume_consistency": 0.65 },
+      "screening_round": { "problem_understanding": 0.72, "communication_clarity": 0.7, "logical_reasoning": 0.5, "red_flags": [] },
+      "github_analysis": { "repo_count": 2, "originality_score": 0.5, "code_quality": 0.85, "commit_consistency": 0.61, "observations": [] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.67,
+        "time_complexity_awareness": 0.59,
+        "edge_case_handling": 0.65,
+        "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.53, "reasoning_consistency": 0.43, "trust_score": 0.71 },
+    "verified_skills": ["Flutter"],
+    "skills_rejected": ["React Native", "Dart"],
+    "final_verdict": "Partially Verified",
+    "notes": "Verified fundamentals in Flutter, but depth lacking in advanced claims."
+  },
+  {
+    "dot_id": "DOT-IN-0028",
+    "candidate_meta": { "country": "India", "experience_years": 6.0, "education": "BCA", "primary_domain": "Backend" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["Java", "PostgreSQL", "Go"], "claim_confidence_score": 0.48, "overclaim_flags": [], "resume_consistency": 0.4 },
+      "screening_round": { "problem_understanding": 0.58, "communication_clarity": 0.82, "logical_reasoning": 0.53, "red_flags": ["Suspicious eye movement", "Delayed responses"] },
+      "github_analysis": { "repo_count": 3, "originality_score": 0.13, "code_quality": 0.47, "commit_consistency": 0.8, "observations": ["Cloned repos suspected"] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.41,
+        "time_complexity_awareness": 0.32,
+        "edge_case_handling": 0.4,
+        "anti_cheat_signals": { "keystroke_variance": "burst_paste", "copy_paste_detected": true, "focus_lost_count": 9 }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.57, "reasoning_consistency": 0.39, "trust_score": 0.2 },
+    "verified_skills": [],
+    "skills_rejected": ["Java", "PostgreSQL", "Go"],
+    "final_verdict": "Not Verified",
+    "notes": "Integrity violations detected; validation failed."
+  },
+  {
+    "dot_id": "DOT-IN-0029",
+    "candidate_meta": { "country": "India", "experience_years": 2.9, "education": "BCA", "primary_domain": "DevOps" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["AWS", "Jenkins", "Linux", "Docker"], "claim_confidence_score": 0.83, "overclaim_flags": [], "resume_consistency": 0.87 },
+      "screening_round": { "problem_understanding": 0.81, "communication_clarity": 0.81, "logical_reasoning": 0.82, "red_flags": [] },
+      "github_analysis": { "repo_count": 13, "originality_score": 0.73, "code_quality": 0.66, "commit_consistency": 0.51, "observations": [] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.86,
+        "time_complexity_awareness": 0.78,
+        "edge_case_handling": 0.8,
+        "anti_cheat_signals": { "keystroke_variance": "natural", "copy_paste_detected": false }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.85, "reasoning_consistency": 0.74, "trust_score": 0.98 },
+    "verified_skills": ["AWS", "Jenkins", "Linux", "Docker"],
+    "skills_rejected": [],
+    "final_verdict": "Verified",
+    "notes": "Strong alignment between claims and demonstrated skills."
+  },
+  {
+    "dot_id": "DOT-IN-0030",
+    "candidate_meta": { "country": "India", "experience_years": 0.7, "education": "B.Tech", "primary_domain": "DevOps" },
+    "rounds": {
+      "resume_analysis": { "claimed_skills": ["Kubernetes", "AWS", "Linux", "Jenkins"], "claim_confidence_score": 0.67, "overclaim_flags": [], "resume_consistency": 0.56 },
+      "screening_round": { "problem_understanding": 0.32, "communication_clarity": 0.72, "logical_reasoning": 0.57, "red_flags": ["Suspicious eye movement", "Delayed responses"] },
+      "github_analysis": { "repo_count": 5, "originality_score": 0.38, "code_quality": 0.8, "commit_consistency": 0.89, "observations": ["Cloned repos suspected"] },
+      "dsa_coding_round": {
+        "problem_solving_score": 0.27,
+        "time_complexity_awareness": 0.22,
+        "edge_case_handling": 0.23,
+        "anti_cheat_signals": { "keystroke_variance": "erratic", "copy_paste_detected": true, "focus_lost_count": 17 }
+      }
+    },
+    "cross_round_validation": { "skill_claim_alignment": 0.25, "reasoning_consistency": 0.44, "trust_score": 0.19 },
+    "verified_skills": [],
+    "skills_rejected": ["Kubernetes", "AWS", "Linux", "Jenkins"],
+    "final_verdict": "Not Verified",
+    "notes": "Integrity violations detected; validation failed."
+  }
+  ]
+}
