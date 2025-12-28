@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOT - Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; height: 100vh; overflow: hidden; background: #000; }
+        .split-container { display: flex; height: 100vh; width: 100%; }
+
+        /* Left Section with Graphics */
+        .left-section { 
+            flex: 1; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            background: #0a0a0a; 
+        }
+
+        .background-image { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            opacity: 0.6; 
+            transition: all 0.8s ease;
+            filter: grayscale(100%) contrast(1.1) brightness(0.7); 
+        }
+
+        .left-section:hover .background-image {
+            opacity: 0.8;
+            transform: scale(1.05);
+            filter: grayscale(100%) contrast(1.2) brightness(0.8);
+        }
+
+        .left-section::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Animated Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.1;
+            transition: all 0.8s ease;
+            z-index: 1;
+        }
+
+        .orb-1 {
+            width: 450px; height: 450px;
+            background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+            top: 10%; left: 10%;
+        }
+
+        .orb-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #666666 0%, transparent 70%);
+            bottom: 20%; right: 15%;
+        }
+
+        .left-section:hover .orb { opacity: 0.15; }
+
+        .brand-text { 
+            position: absolute; 
+            top: 60px; 
+            left: 60px; 
+            z-index: 20; 
+            cursor: default;
+        }
+
+        .brand-text h1 { 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-size: 3rem; 
+            font-weight: 700; 
+            color: #fff; 
+            letter-spacing: 2px; 
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+            transition: all 0.4s ease;
+        }
+
+        .brand-text:hover h1 {
+            letter-spacing: 4px;
+            text-shadow: 0 0 30px rgba(255,255,255,0.5), 0 2px 20px rgba(0,0,0,0.8);
+        }
+
+        .brand-text p { 
+            color: #ccc; 
+            font-size: 1.1rem; 
+            font-weight: 300; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            transition: color 0.4s ease;
+        }
+
+        .brand-text:hover p { color: #fff; }
+
+        /* Floating Badges */
+        .floating-badges {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        .feature-badge {
+            position: absolute;
+            padding: 18px 24px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+            cursor: pointer;
+            pointer-events: all;
+        }
+
+        .feature-badge:hover {
+            background: rgba(255,255,255,0.95);
+            color: #000;
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(255,255,255,0.3);
+        }
+
+        .badge-1 { top: 15%; left: 8%; animation: float1 6s ease-in-out infinite; }
+        .badge-2 { top: 35%; right: 12%; animation: float2 7s ease-in-out infinite; }
+        .badge-3 { top: 55%; left: 15%; animation: float3 5.5s ease-in-out infinite; }
+        .badge-4 { bottom: 25%; right: 20%; animation: float4 6.5s ease-in-out infinite; }
+        .badge-5 { bottom: 15%; left: 25%; animation: float5 7.5s ease-in-out infinite; }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10px, -20px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-15px, 15px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(15px, -15px); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-10px, -15px); }
+        }
+
+        @keyframes float5 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(12px, 10px); }
+        }
+
+        /* Right Section */
+        .right-section { 
+            flex: 1; 
+            background: #000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 50px; 
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .form-wrapper { width: 100%; max-width: 480px; }
+
+        .form-header h2 { 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-size: 2.2rem; 
+            color: #fff; 
+            margin-bottom: 12px; 
+        }
+
+        .form-header p { color: #666; font-size: 1rem; margin-bottom: 40px; }
+
+        .step-indicator { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 50px; 
+            position: relative; 
+        }
+
+        .step-indicator::before { 
+            content: ''; 
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            right: 20px; 
+            height: 2px; 
+            background: rgba(255,255,255,0.1); 
+        }
+
+        .step-progress { 
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            height: 2px; 
+            background: #fff; 
+            transition: width 0.5s; 
+        }
+
+        .step { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            position: relative; 
+            z-index: 2; 
+        }
+
+        .step-circle { 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            background: rgba(255,255,255,0.1); 
+            border: 2px solid rgba(255,255,255,0.2); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 600; 
+            color: #666; 
+            transition: all 0.4s; 
+            margin-bottom: 8px; 
+        }
+
+        .step.active .step-circle { 
+            background: #fff; 
+            color: #000; 
+            box-shadow: 0 0 20px rgba(255,255,255,0.4); 
+        }
+
+        .step-label { 
+            font-size: 0.75rem; 
+            color: #666; 
+            text-transform: uppercase; 
+        }
+
+        .step.active .step-label { color: #fff; }
+
+        .form-step { display: none; }
+        .form-step.active { display: block; animation: fadeIn 0.5s; }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateX(20px); } 
+            to { opacity: 1; transform: translateX(0); } 
+        }
+
+        .input-wrapper { margin-bottom: 28px; }
+
+        .input-wrapper label { 
+            display: block; 
+            color: #999; 
+            font-size: 0.85rem; 
+            margin-bottom: 12px; 
+            font-weight: 500; 
+            letter-spacing: 1px; 
+            text-transform: uppercase; 
+        }
+
+        .input-wrapper input { 
+            width: 100%; 
+            padding: 18px 22px; 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.08); 
+            color: #fff; 
+            font-size: 1rem; 
+            outline: none; 
+            transition: all 0.4s; 
+        }
+
+        .input-wrapper input:focus { 
+            background: rgba(255,255,255,0.07); 
+            border: 1px solid #fff; 
+            box-shadow: 0 0 0 1px #fff; 
+        }
+
+        .checkbox-wrapper { 
+            display: flex; 
+            align-items: center; 
+            margin: 30px 0; 
+            padding: 16px; 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid rgba(255,255,255,0.05); 
+        }
+
+        .checkbox-wrapper input[type="checkbox"] { 
+            width: 24px; 
+            height: 24px; 
+            margin-right: 16px; 
+            cursor: pointer; 
+        }
+
+        .checkbox-wrapper label { 
+            color: #888; 
+            font-size: 0.95rem; 
+            cursor: pointer; 
+        }
+
+        .checkbox-wrapper a { 
+            color: #fff; 
+            text-decoration: none; 
+            margin-left: 5px; 
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper a:hover {
+            text-decoration: underline;
+        }
+
+        .button-container { display: flex; gap: 15px; margin-top: 40px; }
+
+        .back-btn { 
+            padding: 18px 30px; 
+            background: transparent; 
+            border: 1px solid rgba(255,255,255,0.2); 
+            color: #fff; 
+            font-family: 'Space Grotesk'; 
+            font-weight: 600; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            transition: all 0.4s;
+        }
+
+        .back-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .back-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .next-btn { 
+            flex: 1; 
+            padding: 20px; 
+            background: #fff; 
+            border: none; 
+            color: #000; 
+            font-family: 'Space Grotesk'; 
+            font-weight: 600; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            transition: all 0.4s; 
+        }
+
+        .next-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 32px rgba(255,255,255,0.2); 
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 50px;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+        }
+
+        .modal-close:hover {
+            background: #fff;
+            color: #000;
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .modal-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #fff;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            font-family: 'Inter', sans-serif;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .modal-content ul {
+            color: #ccc;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .success-message { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: rgba(0,0,0,0.95); 
+            border: 2px solid #fff; 
+            padding: 40px 60px; 
+            z-index: 2000; 
+            text-align: center; 
+            animation: successPop 0.5s; 
+        }
+
+        @keyframes successPop { 
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; } 
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 
+        }
+
+        .success-message h2 { 
+            color: #fff; 
+            font-family: 'Space Grotesk'; 
+            font-size: 2rem; 
+            margin-bottom: 20px; 
+        }
+
+        .success-message p { color: #ccc; font-size: 1.1rem; }
+
+        @media (max-width: 968px) {
+            .split-container { flex-direction: column; }
+            .left-section { min-height: 200px; flex: 0 0 auto; }
+            .brand-text { top: 30px; left: 30px; }
+            .brand-text h1 { font-size: 2rem; }
+            .floating-badges { display: none; }
+            .right-section { flex: 1; padding: 30px 20px; }
+            .modal-content { padding: 30px 20px; max-width: 90%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="split-container">
+        <div class="left-section">
+            <img src="https://images.unsplash.com/photo-1557683316-973673baf926?w=1200&q=80" alt="Background" class="background-image">
+
+            <!-- Animated Orbs -->
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+
+            <div class="brand-text">
+                <h1>DOT</h1>
+                <p>Database of Talent</p>
+            </div>
+
+            <!-- Floating Badges -->
+            <div class="floating-badges">
+                <div class="feature-badge badge-1">FAST</div>
+                <div class="feature-badge badge-2">EFFICIENT</div>
+                <div class="feature-badge badge-3">VALIDATION</div>
+                <div class="feature-badge badge-4">CREDIBILITY</div>
+                <div class="feature-badge badge-5">LOW COST</div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="form-wrapper">
+                <div class="step-indicator">
+                    <div class="step-progress" id="stepProgress"></div>
+                    <div class="step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Personal</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Company</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Confirm</div>
+                    </div>
+                </div>
+
+                <form id="registrationForm">
+                    <div class="form-step active" data-step="1">
+                        <div class="form-header">
+                            <h2>Personal Details</h2>
+                            <p>Let's start with your basic information</p>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="email">Personal Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-step" data-step="2">
+                        <div class="form-header">
+                            <h2>Company Details</h2>
+                            <p>Tell us about your organization</p>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="companyName">Company Name</label>
+                            <input type="text" id="companyName" name="companyName" placeholder="Acme Corporation">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="companyEmail">Company Email</label>
+                            <input type="email" id="companyEmail" name="companyEmail" placeholder="john@company.com">
+                        </div>
+                    </div>
+
+                    <div class="form-step" data-step="3">
+                        <div class="form-header">
+                            <h2>Almost There!</h2>
+                            <p>Review and accept our terms</p>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">
+                                I accept the 
+                                <a href="#" id="openModal">Terms and Conditions</a>
+                            </label>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Send me updates and newsletter</label>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button type="button" class="back-btn" id="backBtn" disabled>← Back</button>
+                        <button type="button" class="next-btn" id="nextBtn">Next →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Terms and Conditions</h2>
+
+<p>Welcome to <strong>DoT (Database of Talent)</strong>. By creating an account or using our services, you agree to the following Terms and Conditions. Please read them carefully.</p>
+
+<h3>1. Purpose of the Platform</h3>
+<p>DoT is a verification platform designed to evaluate and validate candidate skills, reasoning, and judgment through structured, proctored, and sandboxed assessments. DoT is not a traditional job marketplace or recruitment agency.</p>
+
+<h3>2. Account Registration</h3>
+<p>You must provide accurate, current, and complete information during registration. You are responsible for safeguarding your account credentials and all activities conducted under your account.</p>
+
+<h3>3. Nature of Evaluations</h3>
+<p>All evaluations, scores, and reports generated by DoT are based on observed candidate activity within controlled assessment environments. These outputs are intended to support hiring decisions but do not guarantee job performance or employment outcomes.</p>
+
+<h3>4. No Guarantee of Hiring Outcomes</h3>
+<p>DoT provides verification signals and evidence-based assessments only. Final hiring decisions remain solely the responsibility of the company. DoT does not guarantee candidate suitability, performance, or retention.</p>
+
+<h3>5. Data Integrity and Authenticity</h3>
+<p>Candidate profiles on DoT are created only through real evaluations initiated by registered organizations. DoT does not populate the platform with unverified or synthetic candidate profiles for hiring use.</p>
+
+<h3>6. Acceptable Use</h3>
+<ul>
+    <li>Use the platform solely for lawful hiring and evaluation purposes</li>
+    <li>Do not attempt to reverse engineer, manipulate, or bypass platform controls</li>
+    <li>Do not misuse evaluation data or attempt to misrepresent results</li>
+    <li>Do not upload malicious content or interfere with platform operations</li>
+</ul>
+
+<h3>7. Privacy and Data Protection</h3>
+<p>DoT implements reasonable technical and organizational safeguards to protect data. All personal and evaluation data is handled in accordance with our Privacy Policy. DoT does not sell candidate or company data.</p>
+
+<h3>8. Intellectual Property</h3>
+<p>All platform software, assessment structures, reports, and content are the intellectual property of DoT. Users may not copy, reproduce, or distribute platform materials without written permission.</p>
+
+<h3>9. Service Availability</h3>
+<p>The platform is provided on an “as is” and “as available” basis. DoT does not guarantee uninterrupted access and may modify or suspend services to maintain platform integrity or improve functionality.</p>
+
+<h3>10. Limitation of Liability</h3>
+<p>To the maximum extent permitted by law, DoT shall not be liable for indirect, incidental, consequential, or business-related losses arising from the use of the platform or reliance on evaluation outputs.</p>
+
+<h3>11. Termination</h3>
+<p>DoT reserves the right to suspend or terminate accounts that violate these terms, misuse the platform, or engage in activities that compromise platform trust or integrity.</p>
+
+<h3>12. Modifications to Terms</h3>
+<p>These Terms may be updated periodically. Notable changes will be communicated through the platform. Continued use after updates constitutes acceptance of the revised terms.</p>
+
+<p><em>By registering, you acknowledge that you have read, understood, and agreed to these Terms and Conditions.</em></p>
+
+            <p style="margin-top: 30px; color: #888; font-size: 0.85rem;">Last updated: December 28, 2025</p>
+        </div>
+    </div>
+
+    <script>
+        // Flask Backend Configuration
+        const FLASK_ENDPOINT = 'http://localhost:5032/register';
+
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        const nextBtn = document.getElementById('nextBtn');
+        const backBtn = document.getElementById('backBtn');
+        const form = document.getElementById('registrationForm');
+        const stepProgress = document.getElementById('stepProgress');
+
+        // Modal elements
+        const modal = document.getElementById('termsModal');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        function updateStep() {
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.querySelector('.form-step[data-step="' + currentStep + '"]').classList.add('active');
+
+            document.querySelectorAll('.step').forEach((step, index) => {
+                const stepNum = index + 1;
+                if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (stepNum === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+
+            const progressWidth = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            stepProgress.style.width = 'calc(' + progressWidth + '% - 20px)';
+
+            backBtn.disabled = currentStep === 1;
+            nextBtn.textContent = currentStep === totalSteps ? 'Submit' : 'Next →';
+        }
+
+        function validateCurrentStep() {
+            const currentStepEl = document.querySelector('.form-step[data-step="' + currentStep + '"]');
+            const inputs = currentStepEl.querySelectorAll('input[required]');
+
+            for (let input of inputs) {
+                if (!input.value.trim()) {
+                    input.focus();
+                    alert('Please fill in all required fields');
+                    return false;
+                }
+
+                if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+                    input.focus();
+                    alert('Please enter a valid email address');
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        async function submitToFlask(data) {
+            console.log('Submitting to Flask backend:', FLASK_ENDPOINT);
+            console.log('Data:', data);
+
+            try {
+                const response = await fetch(FLASK_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Registration failed');
+                }
+
+                const result = await response.json();
+                console.log('Success:', result);
+                return result;
+            } catch (error) {
+                console.error('Flask submission error:', error);
+                throw error;
+            }
+        }
+
+        nextBtn.addEventListener('click', async () => {
+            if (currentStep < totalSteps) {
+                if (validateCurrentStep()) {
+                    currentStep++;
+                    updateStep();
+                }
+            } else {
+                if (!validateCurrentStep()) return;
+
+                const termsCheckbox = document.getElementById('terms');
+                if (!termsCheckbox.checked) {
+                    alert('Please accept the Terms and Conditions to continue');
+                    return;
+                }
+
+                const formData = {
+                    full_name: document.getElementById('fullName').value.trim(),
+                    personal_email: document.getElementById('email').value.trim(),
+                    company_name: document.getElementById('companyName').value.trim(),
+                    company_email: document.getElementById('companyEmail').value.trim(),
+                    accepted_terms: termsCheckbox.checked,
+                    newsletter_opt_in: document.getElementById('newsletter').checked
+                };
+
+                nextBtn.disabled = true;
+                nextBtn.textContent = 'Submitting...';
+
+                try {
+                    const result = await submitToFlask(formData);
+
+                    showSuccessMessage();
+
+                    setTimeout(() => {
+                        form.reset();
+                        currentStep = 1;
+                        updateStep();
+                        nextBtn.disabled = false;
+                    }, 3000);
+                } catch (error) {
+                    alert('Submission error: ' + error.message);
+                    nextBtn.disabled = false;
+                    nextBtn.textContent = 'Submit';
+                }
+            }
+        });
+
+        backBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStep();
+            }
+        });
+
+        // Modal functionality
+        openModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('active');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+
+        function showSuccessMessage() {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.innerHTML = '<h2>✓ Registration Successful!</h2><p>Your data has been saved</p>';
+            document.body.appendChild(successDiv);
+
+            setTimeout(() => successDiv.remove(), 3000);
+        }
+
+        updateStep();
+        console.log('DOT Registration System - Flask Backend');
+        console.log('Endpoint:', FLASK_ENDPOINT);
+    </script>
+</body>
+</html>
