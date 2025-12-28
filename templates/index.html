@@ -884,51 +884,47 @@
     setupTagInput('niceToHaveInput', 'niceToHaveContainer', niceToHave);
 
     function openContactModal(dotId) {
-    const candidate = currentCandidates.find(c => c.dotId === dotId);
-    if (!candidate) return;
+        const candidate = currentCandidates.find(c => c.dotId === dotId);
+        if (!candidate) return;
 
-    const modalBody = document.getElementById('modalBody');
-    modalBody.innerHTML = `
-        <div class="modal-info">
-            <strong>Candidate ID</strong>
-            <p>${candidate.dotId}</p>
-        </div>
-        <div class="modal-info">
-            <strong>Overall Score</strong>
-            <p>${candidate.data.overall_score}% Match</p>
-        </div>
-        <div class="modal-info">
-            <strong>Experience</strong>
-            <p>${candidate.data.candidate_meta.experience_years || 0} years</p>
-        </div>
-        <div class="modal-info">
-            <strong>Domain</strong>
-            <p>${candidate.data.candidate_meta.primary_domain || 'N/A'}</p>
-        </div>
-        <div class="modal-info">
-            <strong>Verified Skills</strong>
-            <p>${candidate.data.verified_skills.join(', ') || 'None'}</p>
-        </div>
-        <p style="color: #888; font-size: 0.9rem; margin-top: 20px;">
-            🔄 Redirecting to contact page in 1 second...
-        </p>
-    `;
+        const modalBody = document.getElementById('modalBody');
+        modalBody.innerHTML = `
+            <div class="modal-info">
+                <strong>Candidate ID</strong>
+                <p>${candidate.dotId}</p>
+            </div>
+            <div class="modal-info">
+                <strong>Overall Score</strong>
+                <p>${candidate.data.overall_score}% Match</p>
+            </div>
+            <div class="modal-info">
+                <strong>Experience</strong>
+                <p>${candidate.data.candidate_meta.experience_years || 0} years</p>
+            </div>
+            <div class="modal-info">
+                <strong>Domain</strong>
+                <p>${candidate.data.candidate_meta.primary_domain || 'N/A'}</p>
+            </div>
+            <div class="modal-info">
+                <strong>Verified Skills</strong>
+                <p>${candidate.data.verified_skills.join(', ') || 'None'}</p>
+            </div>
+            <p style="color: #888; font-size: 0.9rem; margin-top: 20px;">
+                🔄 Redirecting to registration form in 1 second...
+            </p>
+        `;
 
-    // Show the modal
-    document.getElementById('contactModal').classList.add('active');
-    
-    // Redirect after 1 second
-    setTimeout(function() {
-        window.location.href = 'http://localhost:5032';
-    }, 1000);
-}
-
+        document.getElementById('contactModal').classList.add('active');
+        
+        setTimeout(function() {
+            window.location.href = '/form';
+        }, 1000);
+    }
 
     function closeContactModal() {
         document.getElementById('contactModal').classList.remove('active');
     }
 
-    // Close modal on outside click
     window.onclick = function(event) {
         const modal = document.getElementById('contactModal');
         if (event.target === modal) {
@@ -946,7 +942,7 @@
 
         const btn = document.getElementById('analyzeBtn');
         btn.disabled = true;
-        btn.innerHTML = '<div class="spinner"></div>';
+        btn.innerHTML = '<div class="spinner"></div> Analyzing...';
 
         const jobRequirements = {
             required_skills: requiredSkills,
@@ -974,18 +970,26 @@
             const data = await response.json();
 
             if (data.success) {
+                // Display results first
                 displayResults(data.recommendations, data.profiles_analyzed);
                 
-                // Redirect after 2.5 seconds
-                setTimeout(function() {
-                    window.location.href = 'http://localhost:5032';
-                }, 2500);
+                // Keep button disabled during redirect countdown
+                btn.innerHTML = '🔄 Redirecting to form in 3 seconds...';
+                
+                // Schedule redirect
+                setTimeout(() => {
+                    console.log('Redirecting to /form');
+                    window.location.href = '/form';
+                }, 3000);
+                
             } else {
                 alert('❌ Error: ' + (data.error || 'Unknown error'));
+                btn.disabled = false;
+                btn.innerHTML = '🔍 Find Best Candidates';
             }
         } catch (error) {
+            console.error('Fetch error:', error);
             alert('❌ Error: ' + error.message);
-        } finally {
             btn.disabled = false;
             btn.innerHTML = '🔍 Find Best Candidates';
         }
@@ -1108,6 +1112,7 @@
         }
     }
 </script>
+
 
 </body>
 </html>
