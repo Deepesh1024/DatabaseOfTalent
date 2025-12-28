@@ -970,28 +970,39 @@
             const data = await response.json();
 
             if (data.success) {
-                // Display results first
-                displayResults(data.recommendations, data.profiles_analyzed);
-                
-                // Keep button disabled during redirect countdown
-                btn.innerHTML = '🔄 Redirecting to form in 3 seconds...';
-                
-                // Schedule redirect
-                setTimeout(() => {
-                    console.log('Redirecting to /form');
-                    window.location.href = '/form';
-                }, 3000);
-                
-            } else {
-                alert('❌ Error: ' + (data.error || 'Unknown error'));
                 btn.disabled = false;
                 btn.innerHTML = '🔍 Find Best Candidates';
+                
+                displayResults(data.recommendations, data.profiles_analyzed);
+                
+                // Show countdown message
+                let countdown = 10;
+                const resultsHeader = document.querySelector('.results-header h2');
+                const originalText = resultsHeader.textContent;
+                
+                const countdownInterval = setInterval(() => {
+                    countdown--;
+                    resultsHeader.textContent = `📊 Candidate Rankings - Redirecting in ${countdown}s...`;
+                    
+                    if (countdown <= 0) {
+                        clearInterval(countdownInterval);
+                    }
+                }, 1000);
+                
+                // Redirect after 10 seconds
+                setTimeout(() => {
+                    window.location.href = '/form';
+                }, 10000);
+                
+            } else {
+                btn.disabled = false;
+                btn.innerHTML = '🔍 Find Best Candidates';
+                alert('❌ Error: ' + (data.error || 'Unknown error'));
             }
         } catch (error) {
-            console.error('Fetch error:', error);
-            alert('❌ Error: ' + error.message);
             btn.disabled = false;
             btn.innerHTML = '🔍 Find Best Candidates';
+            alert('❌ Error: ' + error.message);
         }
     });
 
@@ -1112,6 +1123,7 @@
         }
     }
 </script>
+
 
 
 </body>
