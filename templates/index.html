@@ -830,271 +830,284 @@
         </div>
     </div>
 
-    <script>
-        const requiredSkills = [];
-        const niceToHave = [];
-        let currentCandidates = [];
+<script>
+    const requiredSkills = [];
+    const niceToHave = [];
+    let currentCandidates = [];
 
-        function setupTagInput(inputId, containerId, skillsArray) {
-            const input = document.getElementById(inputId);
-            const container = document.getElementById(containerId);
+    function setupTagInput(inputId, containerId, skillsArray) {
+        const input = document.getElementById(inputId);
+        const container = document.getElementById(containerId);
 
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    const value = input.value.trim();
-                    if (value && !skillsArray.includes(value)) {
-                        skillsArray.push(value);
-                        addTag(container, value, skillsArray);
-                        input.value = '';
-                    }
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const value = input.value.trim();
+                if (value && !skillsArray.includes(value)) {
+                    skillsArray.push(value);
+                    addTag(container, value, skillsArray);
+                    input.value = '';
                 }
-            });
-        }
-
-        function addTag(container, value, skillsArray) {
-            const tag = document.createElement('div');
-            tag.className = 'tag';
-            tag.innerHTML = `
-                ${value}
-                <span class="remove" onclick="removeTag(this, '${value}', ${skillsArray === requiredSkills ? 'requiredSkills' : 'niceToHave'})">×</span>
-            `;
-            container.insertBefore(tag, container.querySelector('.tag-input'));
-        }
-
-        function removeTag(element, value, arrayName) {
-            const array = arrayName === 'requiredSkills' ? requiredSkills : niceToHave;
-            const index = array.indexOf(value);
-            if (index > -1) {
-                array.splice(index, 1);
-            }
-            element.parentElement.remove();
-        }
-
-        // Range slider updates
-        ['Skills', 'Experience', 'Screening', 'Github', 'Coding', 'Trust'].forEach(name => {
-            const slider = document.getElementById(`weight${name}`);
-            const display = document.getElementById(`${name.toLowerCase().replace('github', 'github')}Value`);
-            slider.addEventListener('input', () => {
-                display.textContent = slider.value + '%';
-            });
-        });
-
-        setupTagInput('requiredSkillsInput', 'requiredSkillsContainer', requiredSkills);
-        setupTagInput('niceToHaveInput', 'niceToHaveContainer', niceToHave);
-
-        function openContactModal(dotId) {
-            const candidate = currentCandidates.find(c => c.dotId === dotId);
-            if (!candidate) return;
-
-            const modalBody = document.getElementById('modalBody');
-            modalBody.innerHTML = `
-                <div class="modal-info">
-                    <strong>Candidate ID</strong>
-                    <p>${candidate.dotId}</p>
-                </div>
-                <div class="modal-info">
-                    <strong>Overall Score</strong>
-                    <p>${candidate.data.overall_score}% Match</p>
-                </div>
-                <div class="modal-info">
-                    <strong>Experience</strong>
-                    <p>${candidate.data.candidate_meta.experience_years || 0} years</p>
-                </div>
-                <div class="modal-info">
-                    <strong>Domain</strong>
-                    <p>${candidate.data.candidate_meta.primary_domain || 'N/A'}</p>
-                </div>
-                <div class="modal-info">
-                    <strong>Verified Skills</strong>
-                    <p>${candidate.data.verified_skills.join(', ') || 'None'}</p>
-                </div>
-                <p style="color: #888; font-size: 0.9rem; margin-top: 20px;">
-                    💡 Contact functionality can be integrated with your email system, CRM, or messaging platform.
-                </p>
-            `;
-
-            document.getElementById('contactModal').classList.add('active');
-        }
-
-        function closeContactModal() {
-            document.getElementById('contactModal').classList.remove('active');
-        }
-
-        // Close modal on outside click
-        window.onclick = function(event) {
-            const modal = document.getElementById('contactModal');
-            if (event.target === modal) {
-                closeContactModal();
-            }
-        }
-
-        document.getElementById('jobForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            if (requiredSkills.length === 0) {
-                alert('⚠️ Please add at least one required skill');
-                return;
-            }
-
-            const btn = document.getElementById('analyzeBtn');
-            btn.disabled = true;
-            btn.innerHTML = '<div class="spinner"></div>';
-
-            const jobRequirements = {
-                required_skills: requiredSkills,
-                nice_to_have_skills: niceToHave,
-                min_experience_years: parseFloat(document.getElementById('minExperience').value),
-                target_experience_years: parseFloat(document.getElementById('targetExperience').value),
-                primary_domain: document.getElementById('primaryDomain').value || null,
-                weights: {
-                    skills: parseFloat(document.getElementById('weightSkills').value) / 100,
-                    experience: parseFloat(document.getElementById('weightExperience').value) / 100,
-                    screening: parseFloat(document.getElementById('weightScreening').value) / 100,
-                    github: parseFloat(document.getElementById('weightGithub').value) / 100,
-                    coding: parseFloat(document.getElementById('weightCoding').value) / 100,
-                    trust: parseFloat(document.getElementById('weightTrust').value) / 100
-                }
-            };
-
-            try {
-                const response = await fetch('/analyze', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ job_requirements: jobRequirements })
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    displayResults(data.recommendations, data.profiles_analyzed);
-                } else {
-                    alert('❌ Error: ' + (data.error || 'Unknown error'));
-                }
-            } catch (error) {
-                alert('❌ Error: ' + error.message);
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = '🔍 Find Best Candidates';
             }
         });
+    }
 
-        function displayResults(recommendations, totalProfiles) {
-            const resultsSection = document.getElementById('resultsSection');
-            const statsGrid = document.getElementById('statsGrid');
-            const candidatesList = document.getElementById('candidatesList');
+    function addTag(container, value, skillsArray) {
+        const tag = document.createElement('div');
+        tag.className = 'tag';
+        tag.innerHTML = `
+            ${value}
+            <span class="remove" onclick="removeTag(this, '${value}', ${skillsArray === requiredSkills ? 'requiredSkills' : 'niceToHave'})">×</span>
+        `;
+        container.insertBefore(tag, container.querySelector('.tag-input'));
+    }
 
-            currentCandidates = recommendations.ranking.map(([dotId, data]) => ({ dotId, data }));
+    function removeTag(element, value, arrayName) {
+        const array = arrayName === 'requiredSkills' ? requiredSkills : niceToHave;
+        const index = array.indexOf(value);
+        if (index > -1) {
+            array.splice(index, 1);
+        }
+        element.parentElement.remove();
+    }
 
-            const topCandidates = recommendations.ranking.filter(([_, data]) => data.overall_score >= 65).length;
-            statsGrid.innerHTML = `
-                <div class="stat-card">
-                    <div class="stat-value">${totalProfiles}</div>
-                    <div class="stat-label">Total Profiles</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">${recommendations.ranking.length}</div>
-                    <div class="stat-label">Analyzed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">${topCandidates}</div>
-                    <div class="stat-label">Strong Matches</div>
-                </div>
-            `;
+    // Range slider updates
+    ['Skills', 'Experience', 'Screening', 'Github', 'Coding', 'Trust'].forEach(name => {
+        const slider = document.getElementById(`weight${name}`);
+        const display = document.getElementById(`${name.toLowerCase().replace('github', 'github')}Value`);
+        slider.addEventListener('input', () => {
+            display.textContent = slider.value + '%';
+        });
+    });
 
-            candidatesList.innerHTML = recommendations.ranking.map(([dotId, candidate]) => {
-                const rankClass = candidate.rank === 1 ? 'rank-1' : candidate.rank === 2 ? 'rank-2' : candidate.rank === 3 ? 'rank-3' : 'rank-other';
+    setupTagInput('requiredSkillsInput', 'requiredSkillsContainer', requiredSkills);
+    setupTagInput('niceToHaveInput', 'niceToHaveContainer', niceToHave);
+
+    function openContactModal(dotId) {
+    const candidate = currentCandidates.find(c => c.dotId === dotId);
+    if (!candidate) return;
+
+    const modalBody = document.getElementById('modalBody');
+    modalBody.innerHTML = `
+        <div class="modal-info">
+            <strong>Candidate ID</strong>
+            <p>${candidate.dotId}</p>
+        </div>
+        <div class="modal-info">
+            <strong>Overall Score</strong>
+            <p>${candidate.data.overall_score}% Match</p>
+        </div>
+        <div class="modal-info">
+            <strong>Experience</strong>
+            <p>${candidate.data.candidate_meta.experience_years || 0} years</p>
+        </div>
+        <div class="modal-info">
+            <strong>Domain</strong>
+            <p>${candidate.data.candidate_meta.primary_domain || 'N/A'}</p>
+        </div>
+        <div class="modal-info">
+            <strong>Verified Skills</strong>
+            <p>${candidate.data.verified_skills.join(', ') || 'None'}</p>
+        </div>
+        <p style="color: #888; font-size: 0.9rem; margin-top: 20px;">
+            🔄 Redirecting to contact page in 1 second...
+        </p>
+    `;
+
+    // Show the modal
+    document.getElementById('contactModal').classList.add('active');
+    
+    // Redirect after 1 second
+    setTimeout(function() {
+        window.location.href = 'http://localhost:5032';
+    }, 1000);
+}
+
+
+    function closeContactModal() {
+        document.getElementById('contactModal').classList.remove('active');
+    }
+
+    // Close modal on outside click
+    window.onclick = function(event) {
+        const modal = document.getElementById('contactModal');
+        if (event.target === modal) {
+            closeContactModal();
+        }
+    }
+
+    document.getElementById('jobForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (requiredSkills.length === 0) {
+            alert('⚠️ Please add at least one required skill');
+            return;
+        }
+
+        const btn = document.getElementById('analyzeBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<div class="spinner"></div>';
+
+        const jobRequirements = {
+            required_skills: requiredSkills,
+            nice_to_have_skills: niceToHave,
+            min_experience_years: parseFloat(document.getElementById('minExperience').value),
+            target_experience_years: parseFloat(document.getElementById('targetExperience').value),
+            primary_domain: document.getElementById('primaryDomain').value || null,
+            weights: {
+                skills: parseFloat(document.getElementById('weightSkills').value) / 100,
+                experience: parseFloat(document.getElementById('weightExperience').value) / 100,
+                screening: parseFloat(document.getElementById('weightScreening').value) / 100,
+                github: parseFloat(document.getElementById('weightGithub').value) / 100,
+                coding: parseFloat(document.getElementById('weightCoding').value) / 100,
+                trust: parseFloat(document.getElementById('weightTrust').value) / 100
+            }
+        };
+
+        try {
+            const response = await fetch('/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ job_requirements: jobRequirements })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                displayResults(data.recommendations, data.profiles_analyzed);
                 
-                return `
-                    <div class="candidate-card">
-                        <div class="candidate-header">
-                            <div class="candidate-info">
-                                <span class="rank-badge ${rankClass}">Rank #${candidate.rank}</span>
-                                <h3>${dotId}</h3>
-                                <div class="candidate-meta">
-                                    ${candidate.candidate_meta.experience_years || 0} years exp · 
-                                    ${candidate.candidate_meta.primary_domain || 'N/A'} · 
-                                    ${candidate.final_verdict || 'Pending'}
-                                </div>
-                            </div>
-                            <div class="candidate-actions">
-                                <div class="score-badge">${candidate.overall_score}%</div>
-                                <button class="contact-btn" onclick="openContactModal('${dotId}')">
-                                    📧 Contact
-                                </button>
+                // Redirect after 2.5 seconds
+                setTimeout(function() {
+                    window.location.href = 'http://localhost:5032';
+                }, 2500);
+            } else {
+                alert('❌ Error: ' + (data.error || 'Unknown error'));
+            }
+        } catch (error) {
+            alert('❌ Error: ' + error.message);
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '🔍 Find Best Candidates';
+        }
+    });
+
+    function displayResults(recommendations, totalProfiles) {
+        const resultsSection = document.getElementById('resultsSection');
+        const statsGrid = document.getElementById('statsGrid');
+        const candidatesList = document.getElementById('candidatesList');
+
+        currentCandidates = recommendations.ranking.map(([dotId, data]) => ({ dotId, data }));
+
+        const topCandidates = recommendations.ranking.filter(([_, data]) => data.overall_score >= 65).length;
+        statsGrid.innerHTML = `
+            <div class="stat-card">
+                <div class="stat-value">${totalProfiles}</div>
+                <div class="stat-label">Total Profiles</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${recommendations.ranking.length}</div>
+                <div class="stat-label">Analyzed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${topCandidates}</div>
+                <div class="stat-label">Strong Matches</div>
+            </div>
+        `;
+
+        candidatesList.innerHTML = recommendations.ranking.map(([dotId, candidate]) => {
+            const rankClass = candidate.rank === 1 ? 'rank-1' : candidate.rank === 2 ? 'rank-2' : candidate.rank === 3 ? 'rank-3' : 'rank-other';
+            
+            return `
+                <div class="candidate-card">
+                    <div class="candidate-header">
+                        <div class="candidate-info">
+                            <span class="rank-badge ${rankClass}">Rank #${candidate.rank}</span>
+                            <h3>${dotId}</h3>
+                            <div class="candidate-meta">
+                                ${candidate.candidate_meta.experience_years || 0} years exp · 
+                                ${candidate.candidate_meta.primary_domain || 'N/A'} · 
+                                ${candidate.final_verdict || 'Pending'}
                             </div>
                         </div>
+                        <div class="candidate-actions">
+                            <div class="score-badge">${candidate.overall_score}%</div>
+                            <button class="contact-btn" onclick="openContactModal('${dotId}')">
+                                📧 Contact
+                            </button>
+                        </div>
+                    </div>
 
-                        <div class="recommendation">${candidate.recommendation}</div>
+                    <div class="recommendation">${candidate.recommendation}</div>
 
-                        <div class="skills-section">
-                            <div class="skill-group">
-                                <h4>✅ Verified Skills</h4>
-                                <div class="skill-tags">
-                                    ${candidate.verified_skills.length > 0 
-                                        ? candidate.verified_skills.map(s => `<span class="skill-tag verified">${s}</span>`).join('') 
-                                        : '<span style="color: #555;">None verified</span>'}
-                                </div>
-                            </div>
-                            <div class="skill-group">
-                                <h4>❌ Rejected Skills</h4>
-                                <div class="skill-tags">
-                                    ${candidate.skills_rejected.length > 0 
-                                        ? candidate.skills_rejected.map(s => `<span class="skill-tag rejected">${s}</span>`).join('') 
-                                        : '<span style="color: #555;">None rejected</span>'}
-                                </div>
+                    <div class="skills-section">
+                        <div class="skill-group">
+                            <h4>✅ Verified Skills</h4>
+                            <div class="skill-tags">
+                                ${candidate.verified_skills.length > 0 
+                                    ? candidate.verified_skills.map(s => `<span class="skill-tag verified">${s}</span>`).join('') 
+                                    : '<span style="color: #555;">None verified</span>'}
                             </div>
                         </div>
-
-                        <div class="component-scores">
-                            <div class="score-item">
-                                <div class="score-label">Skills</div>
-                                <div class="score-value">${(candidate.component_scores.skills_score * 100).toFixed(0)}%</div>
-                            </div>
-                            <div class="score-item">
-                                <div class="score-label">Experience</div>
-                                <div class="score-value">${(candidate.component_scores.experience_score * 100).toFixed(0)}%</div>
-                            </div>
-                            <div class="score-item">
-                                <div class="score-label">Screening</div>
-                                <div class="score-value">${(candidate.component_scores.screening_score * 100).toFixed(0)}%</div>
-                            </div>
-                            <div class="score-item">
-                                <div class="score-label">GitHub</div>
-                                <div class="score-value">${(candidate.component_scores.github_score * 100).toFixed(0)}%</div>
-                            </div>
-                            <div class="score-item">
-                                <div class="score-label">Coding</div>
-                                <div class="score-value">${(candidate.component_scores.coding_score * 100).toFixed(0)}%</div>
-                            </div>
-                            <div class="score-item">
-                                <div class="score-label">Trust</div>
-                                <div class="score-value">${(candidate.component_scores.trust_score * 100).toFixed(0)}%</div>
+                        <div class="skill-group">
+                            <h4>❌ Rejected Skills</h4>
+                            <div class="skill-tags">
+                                ${candidate.skills_rejected.length > 0 
+                                    ? candidate.skills_rejected.map(s => `<span class="skill-tag rejected">${s}</span>`).join('') 
+                                    : '<span style="color: #555;">None rejected</span>'}
                             </div>
                         </div>
                     </div>
-                `;
-            }).join('');
 
-            resultsSection.classList.add('active');
-            resultsSection.scrollIntoView({ behavior: 'smooth' });
-        }
+                    <div class="component-scores">
+                        <div class="score-item">
+                            <div class="score-label">Skills</div>
+                            <div class="score-value">${(candidate.component_scores.skills_score * 100).toFixed(0)}%</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-label">Experience</div>
+                            <div class="score-value">${(candidate.component_scores.experience_score * 100).toFixed(0)}%</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-label">Screening</div>
+                            <div class="score-value">${(candidate.component_scores.screening_score * 100).toFixed(0)}%</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-label">GitHub</div>
+                            <div class="score-value">${(candidate.component_scores.github_score * 100).toFixed(0)}%</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-label">Coding</div>
+                            <div class="score-value">${(candidate.component_scores.coding_score * 100).toFixed(0)}%</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-label">Trust</div>
+                            <div class="score-value">${(candidate.component_scores.trust_score * 100).toFixed(0)}%</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
 
-        async function exportResults() {
-            try {
-                const response = await fetch('/export');
-                const data = await response.json();
-                
-                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `dot-results-${new Date().toISOString().slice(0,10)}.json`;
-                a.click();
-            } catch (error) {
-                alert('❌ Error exporting: ' + error.message);
-            }
+        resultsSection.classList.add('active');
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    async function exportResults() {
+        try {
+            const response = await fetch('/export');
+            const data = await response.json();
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `dot-results-${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+        } catch (error) {
+            alert('❌ Error exporting: ' + error.message);
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
