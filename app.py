@@ -9,9 +9,9 @@ from bson import ObjectId
 import json
 import os
 
-app = Flask(__name__, static_folder='.')
 app.config['SECRET_KEY'] = 'your-secret-key-here-change-in-production'
 app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_FILE_DIR'] = 'flask_session'   # ← ADD THIS LINE
 Session(app)
 CORS(app)
 
@@ -675,4 +675,4 @@ if __name__ == '__main__':
     print("📊 Recommendation System: Active")
     print(f"🗄️  MongoDB: {'Connected' if client else 'Disconnected'}\n")
 
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=False)
